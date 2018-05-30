@@ -4,10 +4,12 @@ import Index from '@/components/container/index/index'
 import Header from '@/components/container/header/header'
 import Detail from '@/components/container/details/detail'
 import film from '@/components/container/film/film'
+import login from '@/components/container/user/login'
+import my from '@/components/container/user/my'
 
 Vue.use(Router)
 
-export default new Router({
+var router = new Router({
   routes: [
     {
       path: '/',
@@ -25,10 +27,13 @@ export default new Router({
       component: Header
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'Detail',
       component: Detail,
-      props : true
+      props : true,
+      meta : {
+        login : true
+      }
     },
     {
       path: '/film',
@@ -36,5 +41,32 @@ export default new Router({
       component: film,
       props : true
     },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/my',
+      name: 'my',
+      component: my
+    }
   ]
 })
+
+router.beforeEach((to, from, next)=>{
+  let flag = to.matched.some((item)=>{
+    return item.meta.login
+  })
+  if(flag){
+    if(sessionStorage.getItem("username")){
+      next();
+    }else {
+      router.push({name : 'login'})
+    }
+  }else{
+    next();
+  }
+})
+
+export default router;

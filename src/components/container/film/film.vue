@@ -1,10 +1,12 @@
 <template>
 	<div class="film-list-warp"> 
+		<gotop></gotop>
 		<div class="film-list-nav">
 			<div class="film-playing" @click="change1">正在热映</div>
 			<div class="film-coming" @click="change2">即将上映</div>
 		</div>
 		<div class="film-list">
+			<!-- playing正在热映的电影 -->
 			<ul v-infinite-scroll="loadMore"
 				infinite-scroll-disabled="loading"
 				infinite-scroll-distance="20">
@@ -22,9 +24,7 @@
 								<span class="film-item-count">{{item.cinemaCount}}家影院上映</span>
 							</div>
 						</div>
-						
 					</div>
-					
 				</li>
 			</ul>
 		</div>
@@ -35,6 +35,7 @@
 import Vue from "vue"
 import { InfiniteScroll } from 'mint-ui';
 import { Toast } from 'mint-ui';
+import gotop from "@/components/common/gotop";
 Vue.use(InfiniteScroll);
 	export default {
 		data(){
@@ -48,6 +49,9 @@ Vue.use(InfiniteScroll);
 				hasMore : true, //记录还有没有信息
 
 			}
+		},
+		components : {
+			gotop
 		},
 		created(){
 			this.loadMore();

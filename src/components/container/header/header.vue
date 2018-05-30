@@ -1,7 +1,15 @@
 <template>
 	<div class="header">
-		<span class="fa fa-bars bar" @click="change"></span>
-		<span class="title">{{title}}</span>
+		<div>
+			<span class="fa fa-bars bar" @click="change"></span>
+			<span class="title">{{title}}</span>
+			<span class="fa fa-user-o user" @click="login"></span>
+			<span class="city" @click="getCity">成都 <i class="fa fa-sort-desc"></i></span>
+		</div>
+		<!-- 点击显示的地域信息 -->
+		<div class="city-view">
+			
+		</div>
 	</div>
 </template>
 
@@ -28,6 +36,21 @@
 			this.$bus.on("filmTitle", (title)=>{
 				this.title = title
 			})
+		},
+		methods : {
+			login(){
+				this.$router.push({path : "/login"})
+			},
+			//获取地域信息
+			getCity(){
+				this.$http.get("http://localhost:8080/index/v4/api/city", {
+					params : {
+						__t : Date.now()
+					}
+				}).then((res)=>{
+					console.log(res.data.data.cities);
+				})
+			}
 		}
 	}
 </script>
@@ -49,19 +72,39 @@
     	overflow: hidden;
 
 		.bar{
-			color:white;
+			width: 50/$scss+rem;
+			height: 50/$scss+rem;
+			text-align: center;
+			line-height: 50/$scss+rem;
+			color:#999;
 			display: inline-block;
 			font-size: 16/$scss + rem;
 			float:left;
-			margin-top: 17/$scss + rem; 
-			margin-left: 18/$scss + rem; 
-			margin-right: 18/$scss + rem; 
-
 		}
 
 		.title{
 			color : white;
 			font-size: 14/$scss + rem
+		}
+
+		.user{
+			color : #999;
+			float: right;
+    		font-size: 16/$scss+rem;
+    		text-align: center;
+    		display: inline-block;
+    		line-height: 50/$scss+rem;
+    		margin-right: 20/$scss+rem;
+		}
+
+		.city{
+			color : #999;
+			float: right;
+    		font-size: 16/$scss+rem;
+    		text-align: center;
+    		display: inline-block;
+    		line-height: 50/$scss+rem;
+    		margin-right: 40/$scss+rem;
 		}
 	}
 </style>

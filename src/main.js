@@ -7,6 +7,7 @@ import axios from "axios"
 import VueBus from 'vue-bus'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import "@/common/directive"
 Vue.use(MintUI);
 Vue.use(VueBus);
 Vue.config.productionTip = false

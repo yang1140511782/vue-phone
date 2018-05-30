@@ -3,18 +3,13 @@
       <myhead :flag="flag" :change="change"/>
       <nav1 :flag="flag" :change="change"/>
       <router-view></router-view>
+      
   </div>
 </template>
 
 <script>
 import myhead from "@/components/container/header/header";
 import nav1 from "@/components/container/header/nav";
-import Vue from 'vue';
-import VueBus from 'vue-bus';
-import MintUI from 'mint-ui';
-import 'mint-ui/lib/style.css';
-Vue.use(MintUI);
-Vue.use(VueBus);
 export default {
   name: 'App',
   data(){

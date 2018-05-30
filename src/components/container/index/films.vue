@@ -1,5 +1,6 @@
 <template>
 	<div>
+		
 		<filmItem v-for="(item, index) in films" :key="index" :type="info.type" :film="item"></filmItem>
 		<div class="more-button">更多{{this.info.title}}电影</div>
 	</div>
@@ -21,6 +22,7 @@ import filmItem from "@/components/container/index/filmItem";
 				count : this.info.count
 			}).then((res)=>{
 				this.films = res.data.data.films
+				console.log(this.films.premiereAt)
 			})
 		},
 		components : {

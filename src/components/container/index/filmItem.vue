@@ -11,18 +11,12 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<div>
-	<div class="line">
-		<div class="upcoming">
-			即将上映
-		</div>
-	</div>
-</div> -->
 		<div v-if="type === 'coming'" class="film_coming">
-			<div class="pic">
+			<div class="pic" @click="detail(film.id)">
 				<img :src="film.cover.origin">
 				<div class="row">
-					<p>{{film.name}}</p>
+					<span>{{film.name}}</span>
+					<span>{{sj}}</span>
 				</div>
 			</div>
 			
@@ -33,6 +27,17 @@
 <script>
 	export default {
 		props : ["type", "film"],
+		data(){
+			return {
+				sj : ""
+			}
+		},
+		created(){
+			let MS = this.film.premiereAt;
+			let date = new Date(MS)
+			let sj = (date.getMonth() + 1) + '月' + date.getDate() + "日"
+			this.sj = sj;
+		},
 		methods : {
 			detail(id){
 				this.$router.push({name : "Detail", params : {id : id}})
@@ -60,7 +65,7 @@
 	    	margin-right: -15/scss + rem;
 	    	font-size: 12/$scss + rem;
 	    	color : #9a9a9a;
-			p{
+			span{
 	    		margin-left: 10/$scss + rem;
 			}
 	    	span{

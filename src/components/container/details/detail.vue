@@ -1,6 +1,8 @@
 <template>
 	<div class="container">
-		<img :src="detail.cover.origin">
+		<div class="img">
+			<img :src="detail.cover.origin">
+		</div>
 		<div class="detail">
 			<div class="film-word1">影片简介</div>
 			<div class="film-word2">
@@ -17,7 +19,7 @@
 			</div>
 			<div class="film-word2">
 				<span>上映日期：</span>
-				<span>{{detail.premiereAt}}</span>
+				<span>{{sj}}</span>
 			</div>
 			<div class="film-word3">
 				{{detail.synopsis}}
@@ -37,7 +39,8 @@
 				detail : {
 					cover : {}
 				},
-				name : ""
+				name : "",
+				sj : ""
 			}
 		},
 		created(){
@@ -47,7 +50,11 @@
 				}
 			}).then((res)=>{
 				this.detail = res.data.data.film;
-				let data = this.detail.premiereAt;
+				let MS = this.detail.premiereAt;
+				let date = new Date(MS)
+				let sj = (date.getMonth() + 1) + '月' + date.getDate() + "日"
+				this.sj = sj;
+				// console.log(sj)
 				this.$bus.emit("filmTitle", this.detail.name)
 				this.detail.actors.forEach((n)=>{
 					this.name += n.name;
@@ -60,6 +67,16 @@
 <style lang="scss">
 @import "@/style/reset.scss";
 @import "@/style/common.scss";	
+
+.img{
+	width: 100%;
+	height: 210/$scss+rem;
+
+	img{
+		width: 100%;
+		height: 100%;
+	}
+}
 
 .detail{
 	color : #333;

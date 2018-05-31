@@ -4,22 +4,24 @@
 			<span class="fa fa-bars bar" @click="change"></span>
 			<span class="title">{{title}}</span>
 			<span class="fa fa-user-o user" @click="login"></span>
-			<span class="city" @click="getCity">成都 <i class="fa fa-sort-desc"></i></span>
+			<span class="city" @click="getCity">成都<i class="fa fa-sort-desc"></i></span>
 		</div>
 		<!-- 点击显示的地域信息 -->
-		<div class="city-view">
-			
-		</div>
+		<city />
 	</div>
 </template>
 
 <script>
+import city from "@/components/container/header/city";
 	export default {
 		props : ["flag", "change"],
 		data(){
 			return {
 				title : '卖座电影'
 			}
+		},
+		components : {
+			city
 		},
 		mounted(){
 			this.$router.beforeEach((to, from, next)=>{
@@ -29,10 +31,22 @@
 						break;
 					case "index":
 						this.title = "卖座电影"
+						break;
+					case "film":
+						this.title = "卖座电影"
+						break;
+					case "my":
+						this.title = "我的"
+						break;
+					case "shopping":
+						this.title = "卖座商城"
+						break;
+					case "card":
+						this.title = "查询/绑定/激活卖座卡"
+						break;
 				}
 				next()
 			})
-			
 			this.$bus.on("filmTitle", (title)=>{
 				this.title = title
 			})
@@ -43,7 +57,7 @@
 			},
 			//获取地域信息
 			getCity(){
-				this.$http.get("http://localhost:8080/index/v4/api/city", {
+				this.$http.get("/index/v4/api/city", {
 					params : {
 						__t : Date.now()
 					}

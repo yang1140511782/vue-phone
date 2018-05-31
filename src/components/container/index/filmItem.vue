@@ -65,6 +65,11 @@
 	    	margin-right: -15/scss + rem;
 	    	font-size: 12/$scss + rem;
 	    	color : #9a9a9a;
+	    	height: 40/$scss+rem;
+
+	    	p{
+	    		margin-left: 10/$scss+rem;
+	    	}
 			span{
 	    		margin-left: 10/$scss + rem;
 			}

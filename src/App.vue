@@ -35,7 +35,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 50/$scss + rem !important;
+  padding-top: 50/$scss + rem !important;
   overflow: hidden;
 }
 </style>

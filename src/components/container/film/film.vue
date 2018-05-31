@@ -81,7 +81,7 @@ Vue.use(InfiniteScroll);
 				  duration: -1
 				});
 				this.loading = true;
-				this.$http.get("http://localhost:8080/index/v4/api/film/" + this.type, {
+				this.$http.get("/index/v4/api/film/" + this.type, {
 					params : {
 						page : this.pages,
 						count : 7
@@ -104,7 +104,6 @@ Vue.use(InfiniteScroll);
 </script>
 
 <style lang="scss">
-@import "@/style/reset.scss";
 @import "@/style/common.scss";
 
 .film-list-warp{

@@ -24,9 +24,9 @@
 					{id : 1, path : "/index", name : "首页"},
 					{id : 2, path : "/film", name : "影片"},
 					{id : 3, path : "/cinema", name : "影院"},
-					{id : 4, path : "/store", name : "商城"},
+					{id : 4, path : "/shopping", name : "商城"},
 					{id : 5, path : "/my", name : "我的"},
-					{id : 6, path : "/mzk", name : "卖座卡"}
+					{id : 6, path : "/card", name : "卖座卡"}
 				]
 			}
 			

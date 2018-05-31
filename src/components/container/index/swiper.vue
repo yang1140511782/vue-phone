@@ -23,7 +23,7 @@ import Swiper from "swiper";
    	 		})
    	 	},
 		created(){
-			this.$http.get("http://localhost:8080/index/v4/api/film/now-playing", {
+			this.$http.get("/index/v4/api/film/now-playing", {
 				__t : Date.now(),
 				page : 1,
 				count : 5

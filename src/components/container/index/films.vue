@@ -16,13 +16,12 @@ import filmItem from "@/components/container/index/filmItem";
 			}
 		},
 		created(){
-			this.$http.get("http://localhost:8080/index/v4/api/film/" + this.info.url, {
+			this.$http.get("/index/v4/api/film/" + this.info.url, {
 				__t : Date.now(),
 				page : 1,
 				count : this.info.count
 			}).then((res)=>{
 				this.films = res.data.data.films
-				console.log(this.films.premiereAt)
 			})
 		},
 		components : {

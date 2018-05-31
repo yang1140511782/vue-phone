@@ -44,7 +44,7 @@
 			}
 		},
 		created(){
-			this.$http.get("http://localhost:8080/index/v4/api/film/" + this.id, {
+			this.$http.get("/index/v4/api/film/" + this.id, {
 				params : {
 					__t : Date.now()
 				}
@@ -54,7 +54,7 @@
 				let date = new Date(MS)
 				let sj = (date.getMonth() + 1) + '月' + date.getDate() + "日"
 				this.sj = sj;
-				// console.log(sj)
+				//传值
 				this.$bus.emit("filmTitle", this.detail.name)
 				this.detail.actors.forEach((n)=>{
 					this.name += n.name;

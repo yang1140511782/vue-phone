@@ -6,6 +6,8 @@ import Detail from '@/components/container/details/detail'
 import film from '@/components/container/film/film'
 import login from '@/components/container/user/login'
 import my from '@/components/container/user/my'
+import shopping from '@/components/container/shopping/shopping'
+import card from '@/components/container/card/card'
 
 Vue.use(Router)
 
@@ -50,7 +52,17 @@ var router = new Router({
       path: '/my',
       name: 'my',
       component: my
-    }
+    },
+    {
+      path: '/shopping',
+      name: 'shopping',
+      component: shopping
+    },
+    {
+      path: '/card',
+      name: 'card',
+      component: card
+    },
   ]
 })
 
